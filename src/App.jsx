@@ -6,9 +6,9 @@ import FloralDecor from "./components/FloralDecor";
 import './App.css';
 
 const NAV_LINKS = [
-    { to: '/',      label: '🧱 Zestawy' },
-    { to: '/parts', label: '🔩 Części' },
-    { to: '/faq',   label: '💬 Pomoc' },
+    { to: '/',      label: '🧱 Sets' },
+    { to: '/parts', label: '🔩 Parts' },
+    { to: '/faq',   label: '💬 Help' },
 ];
 
 function NavLink({ to, label }) {

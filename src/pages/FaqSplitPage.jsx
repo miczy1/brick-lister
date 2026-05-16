@@ -3,10 +3,10 @@ import { SplitScreen } from '../layouts/SplitScreen';
 import './FaqSplitPage.css';
 
 const faqs = [
-    { q: 'Jak zaimportować części?',       a: 'Wejdź w zakładkę 🔩 Części — lista wczytuje się automatycznie z pliku CSV.' },
-    { q: 'Gdzie są instrukcje PDF?',        a: 'W zakładce 🧱 Zestawy, przy kafelku kazdego zestawu pojawi się przycisk 📄 PDF.' },
-    { q: 'Czy mogę zmienić cenę elementu?', a: 'Tak! Na stronie Części znajdziesz kalkulator — wpisz swoją cenę za sztukę, a wartość zaktualizuje się w locie.' },
-    { q: 'Skąd pochodzi baza zestawów?',    a: 'Dane o zestawach są hardcodowane w aplikacji i oparte na prawdziwych zestawach LEGO Pirates z lat 90\'.' },
+    { q: 'How do I import parts?',          a: 'Go to the 🔩 Parts tab — the list loads automatically from the CSV file.' },
+    { q: 'Where are the PDF instructions?', a: 'In the 🧱 Sets tab, a 📄 PDF button will appear on each set tile if available.' },
+    { q: 'Can I change the price per piece?', a: 'Yes! On the Parts page you will find a calculator — enter your price per brick and the total value updates instantly.' },
+    { q: 'Where does the set data come from?', a: 'Set data is hardcoded in the app and based on real LEGO Pirates sets from the 1990s.' },
 ];
 
 const FaqItem = ({ q, a }) => {
@@ -25,8 +25,8 @@ const FaqItem = ({ q, a }) => {
 const FaqComponent = () => (
     <div>
         <div className="page-header" style={{ marginBottom: 20 }}>
-            <p className="eyebrow">🌸 Baza wiedzy</p>
-            <h2>Pytania &amp; <span className="gradient-text">Odpowiedzi</span></h2>
+            <p className="eyebrow">🌸 Knowledge base</p>
+            <h2>Questions &amp; <span className="gradient-text">Answers</span></h2>
         </div>
         <div className="faq-list">
             {faqs.map((f, i) => <FaqItem key={i} {...f} />)}
@@ -41,7 +41,7 @@ const FormComponent = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log('Wysyłanie (symulacja):', { email, message });
+        console.log('Sending (simulation):', { email, message });
         setSent(true);
         setTimeout(() => { setSent(false); setEmail(''); setMessage(''); }, 3000);
     };
@@ -49,29 +49,29 @@ const FormComponent = () => {
     return (
         <div>
             <div className="page-header" style={{ marginBottom: 20 }}>
-                <p className="eyebrow">✉️ Kontakt</p>
-                <h2>Napisz <span className="gradient-text">do nas</span></h2>
+                <p className="eyebrow">✉️ Contact</p>
+                <h2>Get in <span className="gradient-text">touch</span></h2>
             </div>
             {sent ? (
                 <div className="form-success glass">
                     <span className="form-success-icon">🌸</span>
-                    <strong>Wysłano! Dziękujemy za wiadomość.</strong>
-                    <span style={{ color: 'var(--text-muted)', fontSize: '.9rem' }}>Odpowiemy wkrótce.</span>
+                    <strong>Sent! Thank you for your message.</strong>
+                    <span style={{ color: 'var(--text-muted)', fontSize: '.9rem' }}>We will get back to you soon.</span>
                 </div>
             ) : (
                 <form onSubmit={handleSubmit} className="contact-form">
                     <div className="form-field">
-                        <label>Adres e‑mail</label>
-                        <input type="email" placeholder="ty@przykład.pl"
+                        <label>E‑mail address</label>
+                        <input type="email" placeholder="you@example.com"
                             value={email} onChange={e => setEmail(e.target.value)} required />
                     </div>
                     <div className="form-field">
-                        <label>Wiadomość</label>
-                        <textarea rows={5} placeholder="Opisz swój problem lub pytanie…"
+                        <label>Message</label>
+                        <textarea rows={5} placeholder="Describe your issue or question…"
                             value={message} onChange={e => setMessage(e.target.value)} required />
                     </div>
                     <button type="submit" className="submit-btn">
-                        Wyślij wiadomość 🌸
+                        Send message 🌸
                     </button>
                 </form>
             )}
@@ -82,9 +82,9 @@ const FormComponent = () => {
 const FaqSplitPage = () => (
     <div>
         <div className="page-header">
-            <p className="eyebrow">💬 Pomoc</p>
-            <h1>Centrum <span className="gradient-text">Pomocy</span></h1>
-            <p>Znajdź odpowiedź lub napisz do nas bezpośrednio.</p>
+            <p className="eyebrow">💬 Support</p>
+            <h1>Help <span className="gradient-text">Centre</span></h1>
+            <p>Find an answer or reach out to us directly.</p>
         </div>
         <SplitScreen leftWeight={1} rightWeight={1}>
             <FaqComponent />

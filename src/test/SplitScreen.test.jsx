@@ -6,36 +6,34 @@ describe('SplitScreen', () => {
     const renderSplit = () =>
         render(
             <SplitScreen leftWeight={1} rightWeight={2}>
-                <div>Panel Lewy</div>
-                <div>Panel Prawy</div>
+                <div>Left Panel</div>
+                <div>Right Panel</div>
             </SplitScreen>
         );
 
-    it('renderuje oba panele', () => {
+    it('renders both panels', () => {
         renderSplit();
-        expect(screen.getByText('Panel Lewy')).toBeInTheDocument();
-        expect(screen.getByText('Panel Prawy')).toBeInTheDocument();
+        expect(screen.getByText('Left Panel')).toBeInTheDocument();
+        expect(screen.getByText('Right Panel')).toBeInTheDocument();
     });
 
-    it('zawiera przycisk zmiany układu', () => {
+    it('contains a layout toggle button', () => {
         renderSplit();
         expect(screen.getByRole('button')).toBeInTheDocument();
     });
 
-    it('domyślnie układ poziomy (flexDirection: row)', () => {
+    it('defaults to horizontal layout', () => {
         renderSplit();
         const btn = screen.getByRole('button');
-        expect(btn.textContent).toContain('Pionowo');
+        expect(btn.textContent).toContain('Stacked');
     });
 
-    it('zmienia układ po kliknięciu przycisku', () => {
+    it('toggles layout on button click', () => {
         renderSplit();
         const btn = screen.getByRole('button');
         fireEvent.click(btn);
-        expect(btn.textContent).toContain('Poziomo');
-        // Klikamy ponownie – wrót do poziomego
+        expect(btn.textContent).toContain('Side by side');
         fireEvent.click(btn);
-        expect(btn.textContent).toContain('Pionowo');
+        expect(btn.textContent).toContain('Stacked');
     });
 });
-

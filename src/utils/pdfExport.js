@@ -28,11 +28,11 @@ export const generatePartsPDF = ({ meta, setId, parts, pricePerBrick, totalValue
     doc.setTextColor(255, 255, 255);
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(18);
-    doc.text('BrickLister – Raport części', MARGIN, 14);
+    doc.text('BrickLister – Parts Report', MARGIN, 14);
 
     doc.setFontSize(10);
     doc.setFont('helvetica', 'normal');
-    doc.text(`Wygenerowano: ${new Date().toLocaleString('pl-PL')}`, MARGIN, 22);
+    doc.text(`Generated: ${new Date().toLocaleString('en-GB')}`, MARGIN, 22);
 
     doc.setTextColor(30, 27, 58);
     doc.setFillColor(245, 238, 255);
@@ -46,16 +46,16 @@ export const generatePartsPDF = ({ meta, setId, parts, pricePerBrick, totalValue
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(9);
     doc.setTextColor(74, 63, 107);
-    doc.text(`Numer zestawu: #${setId}`, MARGIN + 6, 57);
-    doc.text(`Rok wydania: ${meta.year}`, MARGIN + 60, 57);
-    doc.text(`Elementów w zestawie: ${meta.pieces}`, MARGIN + 110, 57);
+    doc.text(`Set number: #${setId}`, MARGIN + 6, 57);
+    doc.text(`Year released: ${meta.year}`, MARGIN + 60, 57);
+    doc.text(`Pieces in set: ${meta.pieces}`, MARGIN + 110, 57);
 
     const statsY = 74;
 
     const stats = [
-        { label: 'Wierszy w raporcie', value: `${parts.length}` },
-        { label: 'Cena za sztukę',     value: `${pricePerBrick.toFixed(2)} PLN` },
-        { label: 'Łączna wartość',     value: `${totalValue.toFixed(2)} PLN` },
+        { label: 'Rows in report',   value: `${parts.length}` },
+        { label: 'Price per brick',  value: `${pricePerBrick.toFixed(2)} PLN` },
+        { label: 'Total value',      value: `${totalValue.toFixed(2)} PLN` },
     ];
 
     stats.forEach((s, i) => {
@@ -73,7 +73,7 @@ export const generatePartsPDF = ({ meta, setId, parts, pricePerBrick, totalValue
         doc.text(s.label, x + 4, statsY + 14);
     });
 
-    const tableColumns = ['#', 'Nazwa', 'ID elementu', 'Ilość', 'Wartość (PLN)'];
+    const tableColumns = ['#', 'Name', 'Element ID', 'Qty', 'Value (PLN)'];
     const tableRows = parts.map((p, i) => [
         i + 1,
         p.name || '—',
@@ -113,7 +113,7 @@ export const generatePartsPDF = ({ meta, setId, parts, pricePerBrick, totalValue
             doc.setFontSize(7.5);
             doc.setTextColor(139, 128, 168);
             doc.text(
-                `BrickLister © ${new Date().getFullYear()} | Strona ${data.pageNumber}`,
+                `BrickLister © ${new Date().getFullYear()} | Page ${data.pageNumber}`,
                 PAGE_W / 2, pageH - 6,
                 { align: 'center' }
             );
@@ -127,7 +127,7 @@ export const generatePartsPDF = ({ meta, setId, parts, pricePerBrick, totalValue
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(10);
     doc.roundedRect(PAGE_W - MARGIN - 70, finalY, 70, 10, 2, 2, 'F');
-    doc.text(`RAZEM: ${totalValue.toFixed(2)} PLN`, PAGE_W - MARGIN - 4, finalY + 7, { align: 'right' });
+    doc.text(`TOTAL: ${totalValue.toFixed(2)} PLN`, PAGE_W - MARGIN - 4, finalY + 7, { align: 'right' });
 
     doc.save(`lego-${setId}-czesci.pdf`);
 };

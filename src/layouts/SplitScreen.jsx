@@ -26,7 +26,7 @@ export const SplitScreen = ({ children, leftWeight = 1, rightWeight = 1 }) => {
                     onMouseEnter={e => e.target.style.transform = 'translateY(-2px)'}
                     onMouseLeave={e => e.target.style.transform = 'translateY(0)'}
                 >
-                    {isVertical ? '⬅️ Poziomo' : '⬇️ Pionowo'}
+                    {isVertical ? '⬅️ Side by side' : '⬇️ Stacked'}
                 </button>
             </div>
 

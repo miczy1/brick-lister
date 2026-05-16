@@ -14,7 +14,7 @@ const ListItem = ({ item = {}, onClick }) => {
                     <span className="list-item-name">{item.name}</span>
                     <code className="list-item-code">{item.elementId}</code>
                 </div>
-                <span className="list-item-qty">{item.quantity} szt.</span>
+                <span className="list-item-qty">{item.quantity} pcs.</span>
             </div>
         );
     }
@@ -30,7 +30,7 @@ const ListItem = ({ item = {}, onClick }) => {
                 </div>
                 <div className="list-item-body">
                     <span className="list-item-name">{item.name}</span>
-                    <span className="list-item-meta">#{item.id} · {item.year} · {item.pieces} el.</span>
+                    <span className="list-item-meta">#{item.id} · {item.year} · {item.pieces} pcs.</span>
                 </div>
                 {item.tags?.map(t => (
                     <span key={t} className="badge" style={{ marginLeft: 4 }}>{t}</span>

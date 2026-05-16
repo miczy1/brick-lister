@@ -39,17 +39,17 @@ const SetHero = ({ meta, setId, onSwitch, allSets, partCount }) => (
             <div className="set-hero-stats">
                 <div className="hero-stat">
                     <span className="hero-stat-val gradient-text">{meta.pieces}</span>
-                    <span>el. w zestawie</span>
+                    <span>pcs. in set</span>
                 </div>
                 <div className="hero-stat-divider" />
                 <div className="hero-stat">
                     <span className="hero-stat-val gradient-text">{partCount}</span>
-                    <span>wczytanych</span>
+                    <span>loaded</span>
                 </div>
             </div>
         </div>
         <div className="set-hero-switcher">
-            <p className="set-hero-switch-label">Zmień zestaw:</p>
+            <p className="set-hero-switch-label">Switch set:</p>
             <div className="set-hero-switch-btns">
                 {Object.entries(allSets).map(([id, m]) => (
                     <button
@@ -117,9 +117,9 @@ const PartsPage = () => {
     return (
         <div>
             <div className="page-header">
-                <p className="eyebrow">🔩 Lista elementów</p>
-                <h1>Części <span className="gradient-text">zestawu</span></h1>
-                <p>Kliknij zestaw poniżej, aby wczytać jego elementy i obliczyć wartość.</p>
+                <p className="eyebrow">🔩 Parts list</p>
+                <h1>Set <span className="gradient-text">Parts</span></h1>
+                <p>Select a set below to load its parts and calculate the total value.</p>
             </div>
 
             <SetHero
@@ -135,8 +135,8 @@ const PartsPage = () => {
             {!loading && parts.length > 0 && (
                 <details className="parts-quicklist glass">
                     <summary className="parts-quicklist-summary">
-                        <span>📋 Podgląd listy <span className="badge">RegularList + ListItem</span></span>
-                        <span className="parts-quicklist-count">{parts.slice(0, 8).length} z {parts.length}</span>
+                        <span>📋 List preview <span className="badge">RegularList + ListItem</span></span>
+                        <span className="parts-quicklist-count">{parts.slice(0, 8).length} of {parts.length}</span>
                     </summary>
                     <div className="parts-quicklist-body">
                         <RegularList
@@ -150,7 +150,7 @@ const PartsPage = () => {
 
             <div className="parts-toolbar">
                 <div className="parts-calc glass">
-                    <label className="calc-label">💰 Cena za sztukę (PLN)</label>
+                    <label className="calc-label">💰 Price per brick (PLN)</label>
                     <div className="calc-controls">
                         <button className="calc-btn" onClick={() => setPricePerBrick(v => Math.max(0, +(v - 0.1).toFixed(2)))}>−</button>
                         <input
@@ -162,7 +162,7 @@ const PartsPage = () => {
                         <button className="calc-btn" onClick={() => setPricePerBrick(v => +(v + 0.1).toFixed(2))}>+</button>
                     </div>
                     <div className="calc-total">
-                        <span>Łączna wartość</span>
+                        <span>Total value</span>
                         <span className="calc-total-num gradient-text">{totalValue.toFixed(2)} PLN</span>
                     </div>
                 </div>
@@ -170,7 +170,7 @@ const PartsPage = () => {
                 <input
                     className="parts-search glass"
                     type="search"
-                    placeholder="🔍 Szukaj po nazwie lub ID…"
+                    placeholder="🔍 Search by name or ID…"
                     value={search}
                     onChange={e => setSearch(e.target.value)}
                 />
@@ -180,7 +180,7 @@ const PartsPage = () => {
                     disabled={loading || parts.length === 0}
                     onClick={() => generatePartsPDF({ meta, setId: activeSet, parts: filtered, pricePerBrick, totalValue })}
                 >
-                    📄 Pobierz PDF
+                    📄 Download PDF
                 </button>
             </div>
 
@@ -188,11 +188,11 @@ const PartsPage = () => {
                 <table className="parts-table">
                     <thead>
                         <tr>
-                            <th>Obrazek</th>
-                            <th>Nazwa</th>
+                            <th>Image</th>
+                            <th>Name</th>
                             <th>ID</th>
-                            <th>Ilość</th>
-                            <th>Wartość</th>
+                            <th>Qty</th>
+                            <th>Value</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -205,7 +205,7 @@ const PartsPage = () => {
                                 </tr>
                             ))
                         ) : filtered.length === 0 ? (
-                            <tr><td colSpan={5} className="parts-empty">Nie znaleziono części 🌸</td></tr>
+                            <tr><td colSpan={5} className="parts-empty">No parts found 🌸</td></tr>
                         ) : filtered.map((part, i) => (
                             <tr key={i} className="parts-row">
                                 <td>
@@ -225,12 +225,23 @@ const PartsPage = () => {
                     </tbody>
                 </table>
             </div>
-            {!loading && <p className="parts-count">{filtered.length} z {parts.length} elementów</p>}
+            {!loading && <p className="parts-count">{filtered.length} of {parts.length} parts</p>}
         </div>
     );
 };
 
 export default PartsPage;
+
+
+
+
+
+
+
+
+
+
+
 
 
 
