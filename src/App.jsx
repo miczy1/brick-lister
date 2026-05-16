@@ -1,26 +1,60 @@
-import { Link, Route, Routes, BrowserRouter } from "react-router-dom";
+import { Link, Route, Routes, BrowserRouter, useLocation } from "react-router-dom";
 import SetsPage from "./pages/SetsPage";
 import PartsPage from "./pages/PartsPage";
 import FaqSplitPage from "./pages/FaqSplitPage";
+import FloralDecor from "./components/FloralDecor";
+import './App.css';
+
+const NAV_LINKS = [
+    { to: '/',      label: '🧱 Zestawy' },
+    { to: '/parts', label: '🔩 Części' },
+    { to: '/faq',   label: '💬 Pomoc' },
+];
+
+function NavLink({ to, label }) {
+    const { pathname } = useLocation();
+    const isActive = pathname === to;
+    return (
+        <Link to={to} className={`nav-link${isActive ? ' nav-link--active' : ''}`}>
+            {label}
+        </Link>
+    );
+}
+
+function Navbar() {
+    return (
+        <header className="navbar glass">
+            <div className="navbar-brand">
+                <span className="navbar-logo">🌸</span>
+                <span className="navbar-title">
+                    <span className="gradient-text">Brick</span>
+                    <span style={{ color: 'var(--text-heading)' }}>Lister</span>
+                </span>
+            </div>
+            <nav className="navbar-links">
+                {NAV_LINKS.map(l => <NavLink key={l.to} {...l} />)}
+            </nav>
+        </header>
+    );
+}
 
 function App() {
-  return(
-      <BrowserRouter>
-        <nav style={{ padding: '1rem', background: '#eee', display: 'flex', gap: '1rem' }}>
-          <Link to="/">Zestawy (Sets)</Link>
-          <Link to="/parts">Części (Parts)</Link>
-          <Link to="/faq">Pomoc (FAQ)</Link>
-        </nav>
-
-        <div style={{ padding: '20px' }}>
-          <Routes>
-            <Route path="/" element={ <SetsPage /> } />
-            <Route path="/parts" element={ <PartsPage /> } />
-            <Route path="/faq" element={ <FaqSplitPage /> } />
-          </Routes>
-        </div>
-      </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <FloralDecor />
+            <Navbar />
+            <main className="main-content">
+                <Routes>
+                    <Route path="/"      element={<SetsPage />} />
+                    <Route path="/parts" element={<PartsPage />} />
+                    <Route path="/faq"   element={<FaqSplitPage />} />
+                </Routes>
+            </main>
+            <footer className="footer">
+                <span>© 2026 BrickLister &nbsp;·&nbsp; Made with 🌸 &amp; React</span>
+            </footer>
+        </BrowserRouter>
+    );
 }
 
 export default App;

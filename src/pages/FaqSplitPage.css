@@ -1,0 +1,159 @@
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.faq-item {
+    cursor: pointer;
+    border-radius: var(--r-md) !important;
+    overflow: hidden;
+    transition: box-shadow .2s, transform .2s;
+    user-select: none;
+}
+
+.faq-item:hover {
+    transform: translateX(4px);
+    box-shadow: var(--shadow-md);
+}
+
+.faq-item--open {
+    border-color: rgba(124, 58, 237, .25) !important;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    font-weight: 700;
+    color: var(--text-heading);
+    font-size: .95rem;
+}
+
+.faq-arrow {
+    flex-shrink: 0;
+    font-size: .7rem;
+    color: var(--primary);
+    transition: transform .25s;
+}
+
+.faq-item--open .faq-arrow {
+    color: var(--pink);
+}
+
+.faq-answer {
+    padding: 0 20px 16px;
+    color: var(--text);
+    font-size: .9rem;
+    line-height: 1.65;
+    border-top: 1px solid var(--border);
+    margin-top: -2px;
+    animation: slideDown .2s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-field label {
+    font-size: .8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--text-muted);
+}
+
+.form-field input,
+.form-field textarea {
+    padding: 12px 16px;
+    border-radius: var(--r-sm);
+    border: 1.5px solid var(--border);
+    background: rgba(255, 255, 255, .75);
+    backdrop-filter: blur(8px);
+    font-family: var(--sans);
+    font-size: .95rem;
+    color: var(--text-heading);
+    outline: none;
+    resize: vertical;
+    transition: border-color .2s, box-shadow .2s;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, .1);
+}
+
+.submit-btn {
+    padding: 14px 28px;
+    border-radius: var(--r-md);
+    border: none;
+    background: var(--grad-main);
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity .2s, transform .2s, box-shadow .2s;
+    box-shadow: 0 4px 20px rgba(124, 58, 237, .3);
+    width: 100%;
+}
+
+.submit-btn:hover {
+    opacity: .9;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(124, 58, 237, .4);
+}
+
+.submit-btn:active {
+    transform: scale(.98);
+}
+
+.form-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 40px 24px;
+    text-align: center;
+    animation: popIn .4s cubic-bezier(.34, 1.56, .64, 1);
+}
+
+.form-success-icon {
+    font-size: 3rem;
+    animation: spinBounce 2s ease-in-out infinite;
+    display: inline-block;
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
