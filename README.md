@@ -1,16 +1,66 @@
-# React + Vite
+# Brick lister – Single Page Application (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projekt dynamicznej aplikacji internetowej typu SPA (Single Page Application) o nazwie **Brick lister**, zrealizowany w ramach laboratoriów z Zaawansowanych Aplikacji Internetowych. Aplikacja wzorowana jest na systemach sprzedażowych i inwentaryzacyjnych klocków LEGO (*Pick a Brick* oraz *BrickLink*). Łączy w sobie nowoczesną architekturę komponentową frontendu z zaawansowaną logiką biznesową, przetwarzaniem plików zewnętrznych oraz elastycznym systemem układów (layouts).
 
-Currently, two official plugins are available:
+## 🚀 Główne Funkcjonalności (Features)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Aplikacja w pełni realizuje wytyczne i wymagania funkcjonalne zawarte w instrukcji laboratoryjnej:
+1. **System Nawigacji i Routing:** Obsługa pełnego, bezprzeładowaniowego routingu dla podstron: *Zestawy (Sets)*, *Listy części (Parts)* oraz *Pomoc (FAQ)* z użyciem `react-router-dom`.
+2. **Architektura Komponentowa i Szablony:** Implementacja uniwersalnego komponentu layoutu typu `SplitScreen`, który pozwala dynamicznie sterować układem paneli (pionowo/poziomo) oraz wagami ich szerokości (`leftWeight`, `rightWeight`) za pomocą mechanizmu `props`.
+3. **Obsługa Zdarzeń i Reaktywność (React Hooks):** Wykorzystanie hooków `useState` oraz `useEffect` do dynamicznego przeliczania wartości całego zestawu klocków na podstawie ceny jednostkowej wprowadzanej przez użytkownika w czasie rzeczywistym.
+4. **Parsowanie i Przetwarzanie Plików CSV:** Integracja z biblioteką `PapaParse` umożliwiająca asynchroniczne pobieranie i parsowanie surowych danych inwentaryzacyjnych (plik `6541_parts.csv`) z automatycznym mapowaniem na interfejs użytkownika (zdjęcie, nazwa, ID elementu, ilość).
+5. **Formularze i Walidacja:** Implementacja w pełni kontrolowanego formularza kontaktowego w sekcji pomocy z obsługą stanów (React Hooks) oraz symulacją zapisu zgłoszenia.
 
-## React Compiler
+## 🛠️ Stos Technologiczny (Tech Stack)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **Framework/Środowisko:** React 18+ (Vite)
+* **Routing:** React Router DOM v6
+* **Parsowanie danych:** PapaParse
+* **Język programowania:** JavaScript (ES6+) / JSX
+* **Zarządzanie stanem:** React Hooks (`useState`, `useEffect`)
 
-## Expanding the ESLint configuration
+## 📂 Struktura Projektu (Project Structure)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```text
+brick-lister/
+├── public/
+│   └── data/
+│       ├── 6541_parts.csv        # Dostarczony plik z danymi klocków
+│       ├── 6277_instruction.pdf  # Instrukcja składania zestawu
+│       └── 6541_preview.jpg      # Grafika podglądowa zestawu
+├── src/
+│   ├── layouts/
+│   │   └── SplitScreen.jsx       # Uniwersalny komponent dzielonego ekranu
+│   ├── pages/
+│   │   ├── SetsPage.jsx          # Strona główna z kafelkami zestawów
+│   │   ├── PartsPage.jsx         # Podstrona inwentarza i wyliczeń CSV
+│   │   └── FaqSplitPage.jsx      # Podstrona FAQ połączona z formularzem
+│   ├── App.jsx                   # Główna konfiguracja routingu
+│   └── main.jsx                  # Punkt wejścia aplikacji Vite
+├── package.json
+└── README.md
+```
+
+## 💻 Instrukcja Uruchomienia (Installation & Setup)
+
+1. **Klonowanie repozytorium:**
+   ```bash
+   git clone [https://github.com/TWOJ_NICK/brick-lister.git](https://github.com/TWOJ_NICK/brick-lister.git)
+   cd brick-lister
+   ```
+
+2. **Instalacja zależności (Node Modules):**
+   ```bash
+   npm install
+   ```
+
+3. **Uruchomienie serwera deweloperskiego (Live Reload):**
+   ```bash
+   npm run dev
+   ```
+   Po uruchomieniu aplikacja będzie dostępna w przeglądarce pod adresem: `http://localhost:5173/`
+
+4. **Budowanie wersji produkcyjnej (Build):**
+   ```bash
+   npm run build
+   ```
