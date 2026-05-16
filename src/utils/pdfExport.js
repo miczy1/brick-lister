@@ -129,6 +129,6 @@ export const generatePartsPDF = ({ meta, setId, parts, pricePerBrick, totalValue
     doc.roundedRect(PAGE_W - MARGIN - 70, finalY, 70, 10, 2, 2, 'F');
     doc.text(`TOTAL: ${totalValue.toFixed(2)} PLN`, PAGE_W - MARGIN - 4, finalY + 7, { align: 'right' });
 
-    doc.save(`lego-${setId}-czesci.pdf`);
+    doc.save(`lego-${setId}-parts.pdf`);
 };
 
