@@ -1,8 +1,11 @@
-import {Link, Route, Router, Routes} from "react-router-dom";
+import { Link, Route, Routes, BrowserRouter } from "react-router-dom";
+import SetsPage from "./pages/SetsPage";
+import PartsPage from "./pages/PartsPage";
+import FaqSplitPage from "./pages/FaqSplitPage";
 
 function App() {
   return(
-      <Router>
+      <BrowserRouter>
         <nav style={{ padding: '1rem', background: '#eee', display: 'flex', gap: '1rem' }}>
           <Link to="/">Zestawy (Sets)</Link>
           <Link to="/parts">Części (Parts)</Link>
@@ -16,7 +19,7 @@ function App() {
             <Route path="/faq" element={ <FaqSplitPage /> } />
           </Routes>
         </div>
-      </Router>
+      </BrowserRouter>
   );
 }
 

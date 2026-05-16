@@ -4,7 +4,7 @@ export const SplitScreen = ({
     children,
     leftWeight = 1,
     rightWeight = 1,
-}) => {{
+}) => {
     const [isVertical, setIsVertical] = useState(false);
     const [left, right] = children;
 
@@ -28,4 +28,4 @@ export const SplitScreen = ({
             </div>
         </div>
     );
-}}
+}
