@@ -51,7 +51,7 @@ function App() {
                 </Routes>
             </main>
             <footer className="footer">
-                <span>© 2026 BrickLister &nbsp;·&nbsp; Made with 🌸 &amp; React</span>
+                <span>© 2026 BrickLister &nbsp;·&nbsp; Made by Michał Pawlaczyk</span>
             </footer>
         </BrowserRouter>
     );
