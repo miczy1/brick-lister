@@ -55,7 +55,6 @@ const FormComponent = () => {
 
 const FaqSplitPage = () => {
     return (
-        // Zauważ, że przekazujemy propsy wagowe zgodnie z wymaganiami
         <SplitScreen leftWeight={1} rightWeight={2}>
             <FaqComponent />
             <FormComponent />
