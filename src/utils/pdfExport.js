@@ -103,10 +103,10 @@ export const generatePartsPDF = ({ meta, setId, parts, pricePerBrick, totalValue
             fillColor: [250, 245, 255],
         },
         columnStyles: {
-            0: { halign: 'center', cellWidth: 10 },
+            0: { align: 'center', cellWidth: 10 },
             2: { font: 'courier', fontSize: 8 },
-            3: { halign: 'center' },
-            4: { halign: 'right', fontStyle: 'bold' },
+            3: { align: 'center' },
+            4: { align: 'right', fontStyle: 'bold' },
         },
         didDrawPage: (data) => {
             const pageH = doc.internal.pageSize.height;
